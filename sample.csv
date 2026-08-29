@@ -1,0 +1,21 @@
+date,app_name,time_spent_min,tasks_completed,earnings_usd,payout_method,minimum_cashout_usd,cashout_time_days,country_tier,device_type
+2026-08-01,Honeygain,0,0,0.13,PayPal,20,1,AU,Android
+2026-08-01,Nielsen Panel,0,0,0.17,PayPal,5,3,US,Desktop
+2026-08-01,Bridge Money,12,6,1.54,PayPal/GiftCard,10,6,CA,iOS
+2026-08-01,Eureka,20,4,1.53,PayPal,5,13,CA,iOS
+2026-08-01,Survey Pop,13,4,0.23,PayPal,5,9,CA,Desktop
+2026-08-01,Survey Spin,19,2,0.9,PayPal,5,3,AU,Android
+2026-08-02,Honeygain,0,0,0.13,PayPal,20,8,UK,Android
+2026-08-02,Nielsen Panel,0,0,0.24,PayPal,5,1,US,Android
+2026-08-02,Bridge Money,25,2,2.44,PayPal/GiftCard,10,3,UK,Desktop
+2026-08-02,Eureka,30,3,0.33,PayPal,5,7,US,Desktop
+2026-08-02,Survey Pop,19,5,0.88,PayPal,5,1,US,Android
+2026-08-02,Survey Spin,20,2,0.76,PayPal,5,7,CA,Android
+2026-08-03,Honeygain,0,0,0.08,PayPal,20,6,AU,Android
+2026-08-03,Nielsen Panel,0,0,0.22,PayPal,5,9,CA,Desktop
+2026-08-03,Bridge Money,17,8,1.03,PayPal/GiftCard,10,14,CA,iOS
+2026-08-03,Eureka,23,3,1.87,PayPal,5,3,AU,iOS
+2026-08-03,Survey Pop,25,5,1.42,PayPal,5,1,UK,iOS
+2026-08-03,Survey Spin,13,5,0.73,PayPal,5,10,AU,Desktop
+2026-08-04,Honeygain,0,0,0.07,PayPal,20,12,AU,iOS
+2026-08-04,Nielsen Panel,0,0,0.15,PayPal,5,10,AU,Desktop
