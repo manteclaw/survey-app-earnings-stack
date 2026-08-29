@@ -1,0 +1,64 @@
+name: Auto-Update Sample Data
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday 6 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Regenerate sample data
+        run: |
+          python -c "
+import csv
+import random
+from datetime import datetime, timedelta
+
+# Simple data regeneration - in production this would pull from live sources
+random.seed(int(datetime.now().timestamp()))
+rows = []
+header = None
+
+with open('sample.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    header = reader.fieldnames
+    template = list(reader)[0] if reader else {}
+
+# Generate fresh sample rows based on template structure
+for i in range(20):
+    row = {}
+    for h in header:
+        if h == 'date':
+            row[h] = (datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d')
+        elif h.endswith('_usd') or h.endswith('_pct') or h == 'price':
+            row[h] = round(random.uniform(1, 500), 2)
+        elif h.endswith('_count') or h.endswith('_score'):
+            row[h] = random.randint(1, 100)
+        else:
+            row[h] = f'sample_{{i}}_{{h}}'
+    rows.append(row)
+
+with open('sample.csv', 'w', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=header)
+    writer.writeheader()
+    writer.writerows(rows)
+
+print(f'Regenerated {{len(rows)}} rows at {{datetime.now()}}')
+"
+      
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sample.csv
+          git diff --staged --quiet || git commit -m "chore: regenerate sample data [$(date -u +%Y-%m-%d)]"
+          git push
